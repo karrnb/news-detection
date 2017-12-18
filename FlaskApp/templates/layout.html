@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+  <title>News Detection</title>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='jqcloud.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='qcloud-1.0.4.js') }}"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h1>News Detection</h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="sidebar-nav">
+          <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <span class="visible-xs navbar-brand">Sidebar menu</span>
+            </div>
+            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ url_for('.home') }}">Check Text</a></li>
+                <li><a href="{{ url_for('.word_cloud_b') }}">Word Cloud</a></li>
+                <li><a href="{{ url_for('.twitter') }}">Check With Twitter</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        {% block body %}{% endblock %}
+      </div>
+    </div>
+  </div>
+</body>

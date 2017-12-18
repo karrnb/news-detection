@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="panel panel-default">
+    <script type="text/javascript">
+      /*!
+       * Create an array of word objects, each representing a word in the cloud
+       */
+      {% if cloud %}
+      var word_array = {{ cloud|safe }}
+      {% else %}
+      var word_array = [
+          {text: "Lorem", weight: 15},
+          {text: "Ipsum", weight: 9, link: "http://jquery.com/"},
+          {text: "Dolor", weight: 6, html: {title: "I can haz any html attribute"}},
+          {text: "Sit", weight: 7},
+          {text: "Amet", weight: 5}
+          // ...as many words as you want
+      ];
+      {% endif %}
+
+      $(function() {
+        // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
+        $("#example").jQCloud(word_array, { width: 600, height: 400});
+      });
+    </script>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          {% if classifier == "b" %}
+          <li class="active"><a href="{{ url_for('.word_cloud_b') }}">Business</a></li>
+          {% else %}
+          <li><a href="{{ url_for('.word_cloud_b') }}">Business</a></li>
+          {% endif %}
+          {% if classifier == "e" %}
+          <li class="active"><a href="{{ url_for('.word_cloud_e') }}">Entertainment</a></li>
+          {% else %}
+          <li><a href="{{ url_for('.word_cloud_e') }}">Entertainment</a></li>
+          {% endif %}
+          {% if classifier == "m" %}
+          <li class="active"><a href="{{ url_for('.word_cloud_m') }}">Medicine</a></li>
+          {% else %}
+          <li><a href="{{ url_for('.word_cloud_m') }}">Medicine</a></li>
+          {% endif %}
+          {% if classifier == "t" %}
+          <li class="active"><a href="{{ url_for('.word_cloud_t') }}">Technology</a></li>
+          {% else %}
+          <li><a href="{{ url_for('.word_cloud_t') }}">Technology</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div id="example" style="width: 550px; height: 350px;"></div>
+  </div>
+{% endblock %}
