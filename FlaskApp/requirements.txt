@@ -21,7 +21,7 @@ Bottleneck==1.2.1
 camera-calibration==1.12.20
 camera-calibration-parsers==1.11.12
 catkin==0.7.6
-certifi==2017.7.27.1
+certifi==2022.12.7
 cffi==1.10.0
 chardet==3.0.4
 click==6.7
